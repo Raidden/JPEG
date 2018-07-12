@@ -1,3 +1,7 @@
+from Tkinter import *
+from PIL import ImageTk, Image
+import Tkinter
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
@@ -103,4 +107,17 @@ if __name__ == '__main__':
     dct_thresh = threshhold_res(dct, 0.1)
     percent_nonzeros = calculate_percent_nonzeros(dct_thresh, img)
     idct = idct_trans(img, dct_thresh)
-    show_img_im_dct(img, idct, percent_nonzeros*100)
+    # show_img_im_dct(img, idct, percent_nonzeros * 100)
+
+
+    root = Tk()
+    img = ImageTk.PhotoImage(Image.open('lena512.bmp'))
+    panel1 = Label(root, image=img)
+    panel2 = Label(root, image=img)
+    panel1.config(height=200)
+    panel2.config(height=200)
+    B = Tkinter.Button(root, text="Hello")
+    panel1.pack(side="bottom", fill="both", expand="yes")
+    panel2.pack(side="bottom", fill="both", expand="yes")
+    B.pack()
+    root.mainloop()
